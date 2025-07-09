@@ -1,8 +1,19 @@
 import "./Attribute.css";
 
-function Attribute({ attr, type, isBanned, addBannedAttr }) {
+function Attribute({
+  id,
+  attr,
+  type,
+  isBanned,
+  addBannedAttr,
+  removeBannedAttr,
+}) {
   const handleClick = () => {
-    addBannedAttr({ type, attr });
+    if (isBanned) {
+      removeBannedAttr({ id, type, attr });
+    } else {
+      addBannedAttr({ type, attr });
+    }
   };
   return (
     <div className="barrio-regular-font">

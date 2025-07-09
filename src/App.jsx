@@ -27,13 +27,22 @@ function App() {
     fetchCocktails();
   }, []);
 
-  const addBannedAttr = (attr) => {
-    const newBannedAttr = { id: nextId.current++, ...attr };
-    setBannedAttr((prev) => [...prev, newBannedAttr]);
+  const addBannedAttr = (newAttr) => {
+    const isDuplicate = bannedAttrs.some(
+      (item) => item.type === newAttr.type && item.attr === newAttr.attr
+    );
+
+    if (!isDuplicate) {
+      const newBannedAttr = { id: nextId.current++, ...newAttr };
+      setBannedAttr((prev) => [...prev, newBannedAttr]);
+    }
   };
 
-  //! log here .....
-  console.log(bannedAttrs);
+  const removeBannedAttr = (reinstatedAttr) => {
+    setBannedAttr((prev) => {
+      return prev.filter((attr) => attr.id !== reinstatedAttr.id);
+    });
+  };
 
   return (
     <div className="app-grid">
@@ -60,7 +69,7 @@ function App() {
       <aside className="column column-right">
         <div className="grid-item">
           <h2>Ban List</h2>
-          <BanList attrList={bannedAttrs} />
+          <BanList attrList={bannedAttrs} removeBannedAttr={removeBannedAttr} />
         </div>
       </aside>
     </div>
