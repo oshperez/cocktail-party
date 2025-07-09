@@ -78,6 +78,18 @@ button:focus-visible {
   font-weight: 400;
   font-style: normal;
 }
+.honk-font {
+  font-family: "Honk", system-ui;
+  font-size: 1.75rem;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.luckiest-guy-font {
+  font-family: "Luckiest Guy", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
 
 @media (prefers-color-scheme: light) {
   :root {

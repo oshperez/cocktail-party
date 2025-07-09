@@ -5,28 +5,39 @@ import BanList from "./components/BanList";
 import Button from "./components/Button";
 
 function App() {
-  const [cocktails, setCocktails] = useState([]);
+  const [cocktail, setCocktail] = useState(null);
   const [loading, setLoading] = useState(true);
   const [bannedAttrs, setBannedAttr] = useState([]);
+  const [seenCocktails, setSeenCocktails] = useState([]);
   const nextId = useRef(1);
 
+  // Fetch from api
   const fetchCocktail = async () => {
     try {
       const res = await fetch(
         "https://www.thecocktaildb.com/api/json/v1/1/random.php"
       );
       const data = await res.json();
-      setCocktails(data.drinks || []);
+      setCocktail(data.drinks[0] || null);
     } catch (err) {
       console.error("Failed to fetch cocktails:", err);
     } finally {
       setLoading(false);
     }
   };
+
+  // Effects
   useEffect(() => {
     fetchCocktail();
   }, []);
 
+  useEffect(() => {
+    if (cocktail) {
+      setSeenCocktails((prev) => [...prev, cocktail.strDrink]);
+    }
+  }, [cocktail]);
+
+  // Ban attribute
   const addBannedAttr = (newAttr) => {
     const isDuplicate = bannedAttrs.some(
       (item) => item.type === newAttr.type && item.attr === newAttr.attr
@@ -38,6 +49,7 @@ function App() {
     }
   };
 
+  // Reinstate attribute
   const removeBannedAttr = (reinstatedAttr) => {
     setBannedAttr((prev) => {
       return prev.filter((attr) => attr.id !== reinstatedAttr.id);
@@ -48,8 +60,11 @@ function App() {
     <div className="app-grid">
       <aside className="column column-left">
         <div className="grid-item">
-          <h2>Search History</h2>
-          <ul></ul>
+          <h2 className="luckiest-guy-font">Seen cocktails</h2>
+
+          {seenCocktails.map((cocktail) => (
+            <div className="honk-font">{cocktail}</div>
+          ))}
         </div>
       </aside>
 
@@ -60,7 +75,7 @@ function App() {
             {loading ? (
               <p>Loading...</p>
             ) : (
-              <Cocktail drink={cocktails[0]} addBannedAttr={addBannedAttr} />
+              <Cocktail cocktail={cocktail} addBannedAttr={addBannedAttr} />
             )}
           </div>
           <Button onClick={fetchCocktail} />
@@ -69,7 +84,7 @@ function App() {
 
       <aside className="column column-right">
         <div className="grid-item">
-          <h2>Ban List</h2>
+          <h2 className="luckiest-guy-font">Ban List</h2>
           <BanList attrList={bannedAttrs} removeBannedAttr={removeBannedAttr} />
         </div>
       </aside>
