@@ -1,5 +1,5 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  /* font-family: "Playwrite VN Guides", serif; */
   line-height: 1.5;
   font-weight: 400;
 
@@ -37,11 +37,6 @@ body {
   min-height: 100vh;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -59,6 +54,29 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+.mystery-quest-heading {
+  font-family: "Mystery Quest", system-ui;
+  font-size: 3.75rem;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.honk-subheading {
+  font-family: "Honk", system-ui;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-size: 3.5rem;
+  font-style: normal;
+  font-variation-settings: "MORF" 15, "SHLN" 50;
+  margin: 0 0 1rem 0;
+}
+
+.barrio-regular-font {
+  font-family: "Barrio", system-ui;
+  font-weight: 400;
+  font-style: normal;
 }
 
 @media (prefers-color-scheme: light) {

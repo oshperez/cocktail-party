@@ -1,0 +1,26 @@
+.cocktail-card {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.cocktail-img {
+  width: 250px;
+  border-radius: 10px;
+  padding: 2px;
+  border: #ff6970 solid 5px;
+}
+
+.cocktail-attribute {
+  font-size: 1.2rem;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  background-color: #e8903d;
+  padding: 10px 15px;
+  border-radius: 5px;
+}
+
+.cocktail-attribute:hover {
+  background-color: #e78426;
+  cursor: pointer;
+}
