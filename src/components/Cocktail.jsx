@@ -2,24 +2,24 @@ import { useState, useEffect } from "react";
 import "./Cocktail.css";
 import Attribute from "./Attribute";
 
-function Cocktail({ drink, addBannedAttr }) {
-  const [cocktail, setCocktail] = useState(null);
+function Cocktail({ drink: cocktail, addBannedAttr }) {
+  // const [cocktail, setCocktail] = useState(null);
 
-  useEffect(() => {
-    const fetchCocktail = async () => {
-      try {
-        const res = await fetch(
-          `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${drink.strDrink}`
-        );
-        const data = await res.json();
-        setCocktail(data.drinks[0] || null);
-      } catch (err) {
-        console.error("Failed to fetch cocktails:", err);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchCocktail = async () => {
+  //     try {
+  //       const res = await fetch(
+  //         `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${drink.strDrink}`
+  //       );
+  //       const data = await res.json();
+  //       setCocktail(data.drinks[0] || null);
+  //     } catch (err) {
+  //       console.error("Failed to fetch cocktails:", err);
+  //     }
+  //   };
 
-    fetchCocktail();
-  }, [drink]);
+  //   fetchCocktail();
+  // }, [drink]);
 
   if (!cocktail) return <p>Loading...</p>;
 

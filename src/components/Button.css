@@ -1,0 +1,30 @@
+.btn {
+  margin-left: auto;
+  margin-left: 12rem;
+  margin-top: 0.5rem;
+}
+
+.btn-tag-wrapper {
+  display: inline-block;
+  perspective: 800px;
+}
+
+.btn-bell {
+  color: #1f3234;
+  cursor: pointer;
+}
+.btn-bell:hover {
+  color: #2a4d65;
+  scale: 1.1;
+}
+
+.btn-tag {
+  font-family: "Luckiest Guy", cursive;
+  font-weight: 400;
+  font-size: 1.2rem;
+  font-style: normal;
+  color: #ff41af;
+  display: inline-block;
+  transform: rotate(20deg);
+  transform-style: preserve-3d;
+}

@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import "./App.css";
 import Cocktail from "./components/Cocktail";
 import BanList from "./components/BanList";
+import Button from "./components/Button";
 
 function App() {
   const [cocktails, setCocktails] = useState([]);
@@ -9,22 +10,21 @@ function App() {
   const [bannedAttrs, setBannedAttr] = useState([]);
   const nextId = useRef(1);
 
+  const fetchCocktail = async () => {
+    try {
+      const res = await fetch(
+        "https://www.thecocktaildb.com/api/json/v1/1/random.php"
+      );
+      const data = await res.json();
+      setCocktails(data.drinks || []);
+    } catch (err) {
+      console.error("Failed to fetch cocktails:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
   useEffect(() => {
-    const fetchCocktails = async () => {
-      try {
-        const res = await fetch(
-          "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=vodka"
-        );
-        const data = await res.json();
-        setCocktails(data.drinks || []);
-      } catch (err) {
-        console.error("Failed to fetch cocktails:", err);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchCocktails();
+    fetchCocktail();
   }, []);
 
   const addBannedAttr = (newAttr) => {
@@ -63,6 +63,7 @@ function App() {
               <Cocktail drink={cocktails[0]} addBannedAttr={addBannedAttr} />
             )}
           </div>
+          <Button onClick={fetchCocktail} />
         </div>
       </main>
 
