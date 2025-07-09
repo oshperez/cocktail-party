@@ -43,7 +43,7 @@ Here's a walkthrough of implemented user stories:
 
 <div>
     <a href="https://www.loom.com/share/098d887e3ad94b30a1e8309e0efaf653">
-      <p>Vite + React - 9 July 2025 - Watch Video</p>
+      <p>Cocktail Party - 9 July 2025 - Watch Video</p>
     </a>
     <a href="https://www.loom.com/share/098d887e3ad94b30a1e8309e0efaf653">
       <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/098d887e3ad94b30a1e8309e0efaf653-050f10e48776a6fe-full-play.gif">
