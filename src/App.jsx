@@ -3,6 +3,7 @@ import "./App.css";
 import Cocktail from "./components/Cocktail";
 import BanList from "./components/BanList";
 import Button from "./components/Button";
+import Spinner from "./components/Spinner";
 
 function App() {
   const [cocktail, setCocktail] = useState(null);
@@ -13,17 +14,31 @@ function App() {
 
   // Fetch from api
   const fetchCocktail = async () => {
-    try {
-      const res = await fetch(
-        "https://www.thecocktaildb.com/api/json/v1/1/random.php"
-      );
-      const data = await res.json();
-      setCocktail(data.drinks[0] || null);
-    } catch (err) {
-      console.error("Failed to fetch cocktails:", err);
-    } finally {
-      setLoading(false);
+    setLoading(true);
+
+    while (true) {
+      try {
+        const res = await fetch(
+          "https://www.thecocktaildb.com/api/json/v1/1/random.php"
+        );
+        const data = await res.json();
+        const cocktail = data.drinks[0] || null;
+
+        const containsBannedAttr = bannedAttrs.some((item) => {
+          return item.attr === cocktail[`str${item.type}`];
+        });
+
+        if (containsBannedAttr) {
+          continue;
+        }
+
+        setCocktail(cocktail);
+        break;
+      } catch (err) {
+        console.error("Failed to fetch cocktails:", err);
+      }
     }
+    setLoading(false);
   };
 
   // Effects
@@ -73,7 +88,7 @@ function App() {
           <h1 className="mystery-quest-heading">Cocktail Party 🍸</h1>
           <div>
             {loading ? (
-              <p>Loading...</p>
+              <Spinner />
             ) : (
               <Cocktail cocktail={cocktail} addBannedAttr={addBannedAttr} />
             )}

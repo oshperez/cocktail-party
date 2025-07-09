@@ -18,17 +18,17 @@ function Cocktail({ cocktail, addBannedAttr }) {
         <div>
           <Attribute
             attr={cocktail.strIngredient1}
-            type="ingredient"
+            type="Ingredient1"
             addBannedAttr={addBannedAttr}
           />
           <Attribute
             attr={cocktail.strAlcoholic}
-            type="alcoholic"
+            type="Alcoholic"
             addBannedAttr={addBannedAttr}
           />
           <Attribute
             attr={cocktail.strGlass}
-            type="glass"
+            type="Glass"
             addBannedAttr={addBannedAttr}
           />
         </div>

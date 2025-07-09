@@ -1,0 +1,9 @@
+.spinner-wrapper {
+  text-align: center;
+  padding: 1rem;
+}
+
+.spinner-image {
+  display: block;
+  margin: 0 auto;
+}
