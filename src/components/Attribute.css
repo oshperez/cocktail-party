@@ -1,0 +1,22 @@
+.cocktail-attribute {
+  font-size: 1.2rem;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  background-color: #e8903d;
+  padding: 10px 15px;
+  border-radius: 5px;
+}
+
+.cocktail-attribute:hover {
+  background-color: #e78426;
+  cursor: pointer;
+}
+
+.attr-banned {
+  background-color: #adb038;
+}
+
+.attr-banned:hover {
+  background-color: #c2c43b;
+}

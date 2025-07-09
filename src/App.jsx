@@ -1,10 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import "./App.css";
 import Cocktail from "./components/Cocktail";
+import BanList from "./components/BanList";
 
 function App() {
   const [cocktails, setCocktails] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [bannedAttrs, setBannedAttr] = useState([]);
+  const nextId = useRef(1);
 
   useEffect(() => {
     const fetchCocktails = async () => {
@@ -23,6 +26,15 @@ function App() {
 
     fetchCocktails();
   }, []);
+
+  const addBannedAttr = (attr) => {
+    const newBannedAttr = { id: nextId.current++, ...attr };
+    setBannedAttr((prev) => [...prev, newBannedAttr]);
+  };
+
+  //! log here .....
+  console.log(bannedAttrs);
+
   return (
     <div className="app-grid">
       <aside className="column column-left">
@@ -36,7 +48,11 @@ function App() {
         <div className="grid-item">
           <h1 className="mystery-quest-heading">Cocktail Party 🍸</h1>
           <div>
-            {loading ? <p>Loading...</p> : <Cocktail drink={cocktails[0]} />}
+            {loading ? (
+              <p>Loading...</p>
+            ) : (
+              <Cocktail drink={cocktails[0]} addBannedAttr={addBannedAttr} />
+            )}
           </div>
         </div>
       </main>
@@ -44,7 +60,7 @@ function App() {
       <aside className="column column-right">
         <div className="grid-item">
           <h2>Ban List</h2>
-          <ul></ul>
+          <BanList attrList={bannedAttrs} />
         </div>
       </aside>
     </div>
