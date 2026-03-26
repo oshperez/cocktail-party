@@ -1,14 +1,10 @@
-# Web Development Project 4 - _Cocktail Party_
+# Cocktail Party
 
-Submitted by: **Osmani Hernandez**
+## Description
 
-This web app: **lets users explore random cocktails from TheCocktailDB API and ban certain attributes like ingredients, alcohol type, or glass type to refine future results. It also shows a history of viewed cocktails during the session.**
+This app lets users explore random cocktails from TheCocktailDB API and ban certain attributes like ingredients, alcohol type, or glass type to refine future results. It also shows a history of viewed cocktails during the session.
 
-Time spent: **8** hours spent in total
-
-## Required Features
-
-The following **required** functionality is completed:
+## Main features
 
 - [x] **Application features a button that creates a new API fetch request on click and displays at least three attributes and an image obtained from the returned JSON data**
   - The app consistently displays the drink name, alcohol content, glass type, and one ingredient.
@@ -19,19 +15,12 @@ The following **required** functionality is completed:
 - [x] **Clicking on a displayed value for one attribute adds it to a displayed ban list**
   - Each attribute is clickable and can be added to the ban list instantly.
 - [x] **Attributes on the ban list prevent further images/API results with that attribute from being displayed**
-  - The app continues fetching until it finds a cocktail that does not contain any banned attributes.
-
-## Optional Features
-
-The following **optional** features are implemented:
-
+- The app continues fetching until it finds a cocktail that does not contain any banned attributes.
 - [x] Multiple types of attributes are clickable and can be added to the ban list
 - [x] Users can see a stored history of their previously displayed results from this session
   - The left panel shows a list of all cocktail names viewed so far.
 
 ## Additional Features
-
-The following **additional** features are implemented:
 
 - [x] Includes a fun rotating “Cocktail me!” button with a curved arrow SVG and a concierge bell icon using FontAwesome
 - [x] Banned attributes can be removed from the ban list with one click
@@ -43,7 +32,7 @@ Here's a walkthrough of implemented user stories:
 
 <div>
     <a href="https://www.loom.com/share/098d887e3ad94b30a1e8309e0efaf653">
-      <p>Cocktail Party - 9 July 2025 - Watch Video</p>
+      <p>Cocktail Party - Watch Video</p>
     </a>
     <a href="https://www.loom.com/share/098d887e3ad94b30a1e8309e0efaf653">
       <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/098d887e3ad94b30a1e8309e0efaf653-050f10e48776a6fe-full-play.gif">
@@ -54,20 +43,4 @@ GIF created with [Loom](https://www.loom.com)
 
 ## Notes
 
-One of the most challenging parts was implementing the ban list logic. Ensuring that banned attributes are compared dynamically using string keys (e.g., `cocktail["str" + type]`) and that the app skips over results containing banned attributes required careful handling. Another tricky part was managing the loading state while using a `while(true)` loop to keep fetching until a valid cocktail was found.
-
-## License
-
-    Copyright 2025 Osmani Hernandez
-
-    Licensed under the Apache License, Version 2.0 (the "License");
-    you may not use this file except in compliance with the License.
-    You may obtain a copy of the License at
-
-        http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.
+One of the most challenging parts was implementing the ban list logic. Ensuring that banned attributes are compared dynamically using string keys and that the app skips over results containing banned attributes required careful handling. Another tricky part was managing the loading state while using a loop to keep fetching until a valid cocktail was found.
